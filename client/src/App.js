@@ -5,58 +5,59 @@ import {
   Route
 } from "react-router-dom";
 import HomePage from './components/HomePage'
-import { Layout, Menu } from 'antd';
-
+import { Layout, Menu, Button } from 'antd';
+import 'antd/dist/antd.css';
 import './App.css'
 
 function App() {
-
-  const { Header, Content, Footer, Sider } = Layout;
+  const { SubMenu } = Menu;
+  const { Header, Content, Sider, Footer } = Layout;
 
   return (
     <Router>
       <Layout>
-        
-        <Header style={{
-          display:"flex", 
-          justifyContent:"space-between",
-          alignItems:"center",
-          background:"grey"
-          }}>
-          <div>logo</div>
-          <Menu style={{display:"flex", listStyle:"none"}}>
-            <Menu.Item key="1">menu 1</Menu.Item>
-            <Menu.Item key="2">menu 2</Menu.Item>
-            <Menu.Item key="3">menu 3</Menu.Item>
-          </Menu>
+        <Header>
         </Header>
-        <Layout style={{
-          display:"flex", 
-          background:"#e9ecef"
-          }}>
- 
-
-            <Menu style={{listStyle:"none"}}>
-              <Menu.Item key="1">year 1</Menu.Item>
-              <Menu.Item key="2">year 2</Menu.Item>
-              <Menu.Item key="3">year 3</Menu.Item>
+        <Layout>
+          <Sider width={200} className="site-layout-background">
+            <Menu
+              mode="inline"
+              defaultSelectedKeys={['1']}
+              defaultOpenKeys={['sub1']}
+            >
+              <SubMenu key="sub1" title="subnav 1">
+                <Menu.Item key="1">option1</Menu.Item>
+                <Menu.Item key="2">option2</Menu.Item>
+                <Menu.Item key="3">option3</Menu.Item>
+                <Menu.Item key="4">option4</Menu.Item>
+              </SubMenu>
+              <SubMenu key="sub2" title="subnav 2">
+                <Menu.Item key="5">option5</Menu.Item>
+                <Menu.Item key="6">option6</Menu.Item>
+                <Menu.Item key="7">option7</Menu.Item>
+                <Menu.Item key="8">option8</Menu.Item>
+              </SubMenu>
+              <SubMenu key="sub3" title="subnav 3">
+                <Menu.Item key="9">option9</Menu.Item>
+                <Menu.Item key="10">option10</Menu.Item>
+                <Menu.Item key="11">option11</Menu.Item>
+                <Menu.Item key="12">option12</Menu.Item>
+              </SubMenu>
             </Menu>
-
-          <Layout style={{background:"#fff", flexGrow:"1"}}>
-            <Menu style={{display:"flex", listStyle:"none"}}>
-              <Menu.Item key="1">menu 1</Menu.Item>
-              <Menu.Item key="2">menu 2</Menu.Item>
-              <Menu.Item key="3">menu 3</Menu.Item>
-            </Menu>
-            <Content>
-              <Routes>
-                <Route exact path="/" element={<HomePage/>} />
-              </Routes>
-            </Content>
-          </Layout>
-          
+          </Sider>
+          <Content
+          className="site-layout-background"
+          style={{
+            padding: 24,
+            margin: 0,
+            minHeight: 280,
+          }}
+        >
+            <Routes>
+              <Route exact path="/" element={<HomePage/>} />
+            </Routes>
+          </Content>
         </Layout>
-        
         <Footer style={{ textAlign: 'center' }}>THISYEAR &copy; {new Date().getFullYear()} ljieun </Footer>
       </Layout>
     </Router>
